@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ask the AI</title>
+  <title>PC Builder AI</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Ask the AI</h1>
-  <textarea id="prompt" rows="5" cols="80" placeholder="Ask me anything..."></textarea>
-  <br />
-  <button onclick="askAI()">Ask</button>
-  <pre id="output"></pre>
+  <h1>PC Builder Form</h1>
+  <form id="pc-builder-form">
+    <label>Budget: $<input type="number" id="budget" required /></label><br/>
+    <label>Use Case: <input type="text" id="use_case" required /></label><br/>
+    <label>Region: <input type="text" id="region" required /></label><br/>
+    <label>Preferences (comma-separated): <input type="text" id="preferences" /></label><br/>
+    <label>Extra Info: <input type="text" id="extra_info" /></label><br/>
+    <button type="submit">Generate Builds</button>
+  </form>
+
+  <div id="results"></div>
 
   <script src="script.js"></script>
 </body>

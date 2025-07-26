@@ -18,6 +18,18 @@ You are a PC building expert. Create 3 PC builds for a user with these requireme
 Provide Budget, Balanced, and Performance builds with realistic components and pricing.
 Each build needs: CPU, GPU, Motherboard, RAM, SSD, PSU, Case, Cooler.
 Include component names, prices, and brief explanations.
+Return data in JSON format like:
+{
+  "Budget Video Editing Build": {
+    "price": "$2000",
+    "parts": {
+      "CPU": "Intel Core i5...",
+      "GPU": "NVIDIA RTX...",
+      ...
+    }
+  },
+  ...
+}
 `;
 
   const resultsDiv = document.getElementById("results");
@@ -27,27 +39,39 @@ Include component names, prices, and brief explanations.
     const response = await fetch("https://api.together.xyz/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer tgp_v1_01C6TYEbuIesSa2YC3m6u-gjL9NHdfDbslts88OjE1g",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: "Bearer tgp_v1_X2teqUGKpH2OnSFb5cy5gmgu5Jk9EkTLV-R5sk___do"
       },
       body: JSON.stringify({
         model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
-        messages: [{ role: "user", content: prompt }],
-        temperature: 0.7,
-        max_tokens: 1000
+        messages: [{ role: "user", content: prompt }]
       })
     });
 
     const data = await response.json();
+    const text = data.choices[0].message.content;
+    const builds = JSON.parse(text);
 
-    if (data.choices && data.choices.length > 0) {
-      const reply = data.choices[0].message.content;
-      resultsDiv.innerHTML = `<pre>${reply}</pre>`;
-    } else {
-      resultsDiv.innerHTML = "⚠️ No response from the AI. Please try again.";
-    }
-  } catch (error) {
-    resultsDiv.innerHTML = `<p style="color:red;">❌ Error: ${error.message}</p>`;
-    console.error("AI error:", error);
+    resultsDiv.innerHTML = "";
+
+    Object.entries(builds).forEach(([buildName, buildData]) => {
+      const card = document.createElement("div");
+      card.className = "result-card";
+
+      const header = document.createElement("h2");
+      header.textContent = `${buildName} – ${buildData.price}`;
+      card.appendChild(header);
+
+      Object.entries(buildData.parts).forEach(([part, detail]) => {
+        const partLine = document.createElement("p");
+        partLine.innerHTML = `<span class="part-title">${part}:</span> ${detail}`;
+        card.appendChild(partLine);
+      });
+
+      resultsDiv.appendChild(card);
+    });
+  } catch (err) {
+    console.error(err);
+    resultsDiv.innerHTML = "❌ Error generating builds.";
   }
 });

@@ -1,21 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PC Builder AI</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>PC Builder Form</h1>
-  <form id="pc-builder-form">
-    <label>Budget: $<input type="number" id="budget" required /></label><br/>
-    <label>Use Case: <input type="text" id="use_case" required /></label><br/>
-    <label>Region: <input type="text" id="region" required /></label><br/>
-    <label>Preferences (comma-separated): <input type="text" id="preferences" /></label><br/>
-    <label>Extra Info: <input type="text" id="extra_info" /></label><br/>
-    <button type="submit">Generate Builds</button>
-  </form>
+  <div class="container">
+    <h1>Build Your Perfect PC</h1>
+    <form id="pc-builder-form" class="form-card">
+      <label>💰 Budget (USD)
+        <input type="number" id="budget" required />
+      </label>
+      <label>🎯 Primary Use Case
+        <select id="use_case" required>
+          <option value="Video Editing">Video Editing</option>
+          <option value="Gaming">Gaming</option>
+          <option value="Workstation">Workstation</option>
+        </select>
+      </label>
+      <label>🌍 Region
+        <select id="region" required>
+          <option value="United States">United States</option>
+          <option value="Canada">Canada</option>
+        </select>
+      </label>
+      <label>✨ Preferences
+        <input type="text" id="preferences" placeholder="e.g. Quiet, RGB, Compact" />
+      </label>
+      <label>📝 Additional Info
+        <input type="text" id="extra_info" placeholder="e.g. All-white theme" />
+      </label>
+      <button type="submit">⚙️ Generate My PC Build</button>
+    </form>
 
-  <div id="results"></div>
+    <div id="results" class="results-container"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>

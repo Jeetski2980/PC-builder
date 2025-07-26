@@ -5,7 +5,7 @@ async function askAI() {
   const response = await fetch("https://api.together.xyz/inference", {
     method: "POST",
     headers: {
-      "Authorization": "Bearer 1dcb0c48c5afc74229cf8eca52f3996550bfd0a4ef978f2103d4cb9d192936d6",
+      "Authorization": "Bearer tgp_v1_-XwwRFDDK3CexZtLlQSM7cqKoBBQFt90Gr0RfWqcYxI",
       "Content-Type": "application/json"
     },
     body: JSON.stringify({

@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Ask AI</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ask the AI</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>Ask the AI</h1>
-  <textarea id="prompt" placeholder="Enter your prompt here..."></textarea>
+  <textarea id="prompt" rows="5" cols="80" placeholder="Ask me anything..."></textarea>
+  <br />
   <button onclick="askAI()">Ask</button>
-  <pre id="output">AI response will appear here...</pre>
+  <pre id="output"></pre>
+
   <script src="script.js"></script>
 </body>
 </html>

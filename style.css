@@ -1,22 +1,50 @@
 body {
-  background-color: #0f1117;
-  color: #f5f5f5;
-  font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #111217;
+  color: #fff;
 }
 
-.container {
-  max-width: 900px;
+.main-layout {
+  display: flex;
+  max-width: 1400px;
   margin: auto;
-  padding: 40px 20px;
+}
+
+.sidebar {
+  width: 200px;
+  padding: 20px;
+  background-color: #1a1c22;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.ad {
+  height: 200px;
+  background-color: #2d3038;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 14px;
+  border: 1px dashed #555;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 40px;
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 30px;
   font-size: 28px;
-  color: #00bfff;
+  margin-bottom: 30px;
+  color: #00ccff;
 }
 
 .form-card {
@@ -26,14 +54,14 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  margin-bottom: 40px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
 }
 
 .form-card label {
-  font-size: 15px;
   display: flex;
   flex-direction: column;
-  color: #ddd;
+  font-size: 14px;
 }
 
 .form-card input,
@@ -43,30 +71,25 @@ h1 {
   border: none;
   border-radius: 6px;
   font-size: 14px;
-  background-color: #2b2e38;
+  background-color: #2a2d36;
   color: #fff;
 }
 
 .form-card button {
   padding: 12px;
   font-size: 16px;
-  background-color: #00bfff;
+  background-color: #00ccff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s;
   color: #fff;
-}
-
-.form-card button:hover {
-  background-color: #009acc;
+  margin-top: 10px;
 }
 
 .results-container {
-  margin-top: 40px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 30px;
 }
 
 .result-card {
@@ -77,17 +100,24 @@ h1 {
 }
 
 .result-card h2 {
-  color: #00bfff;
-  font-size: 22px;
+  color: #00ccff;
+  font-size: 20px;
   margin-bottom: 10px;
 }
 
 .result-card p {
-  margin: 4px 0;
   color: #ccc;
+  margin: 6px 0;
 }
 
-.result-card .part-title {
+.part-title {
   font-weight: bold;
   color: #fff;
+}
+
+.buy-link {
+  color: #00ccff;
+  text-decoration: underline;
+  margin-left: 10px;
+  font-size: 13px;
 }

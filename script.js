@@ -64,7 +64,8 @@ Return data in JSON format like:
 
       Object.entries(buildData.parts).forEach(([part, detail]) => {
         const partLine = document.createElement("p");
-        partLine.innerHTML = `<span class="part-title">${part}:</span> ${detail}`;
+        const amazonURL = `https://www.amazon.com/s?k=${encodeURIComponent(detail)}`;
+        partLine.innerHTML = `<span class="part-title">${part}:</span> ${detail} <a class="buy-link" href="${amazonURL}" target="_blank">Buy</a>`;
         card.appendChild(partLine);
       });
 
